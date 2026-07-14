@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cxv8yuyipw3g" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bgil6xushvl12" path="res://board.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dgyixpgd6vrnc" path="res://board.gd" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=840976881]
 script = ExtResource("1_0xm2m")
 
 [node name="Board" parent="." unique_id=1012123366 instance=ExtResource("2_h2yge")]
+position = Vector2(300, 300)
+scale = Vector2(1.9533333, 1.9833332)
+script = ExtResource("3_h2yge")
