@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dta4wi5mi4kgq"]
+
+[ext_resource type="Texture2D" uid="uid://unoghgww6bx4" path="res://Assets/cross 1.png" id="1_nsgoa"]
+
+[node name="Cross" type="Sprite2D" unique_id=937858993]
+texture = ExtResource("1_nsgoa")
