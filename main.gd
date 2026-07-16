@@ -57,10 +57,18 @@ func new_game():
 	player = 1
 	winner = 0
 	grid_data = [[0,0,0],[0,0,0],[0,0,0]]
+	row_sum = 0
+	col_sum = 0
+	diagonal1_sum = 0
+	diagonal2_sum = 0
+	#clear existing markers
+	get_tree().call_group("circles", "queue_free")
+	get_tree().call_group("crosses", "queue_free")
 	#create a marker to show starting player's turn
 	var target_pos = Vector2($PlayerPanel.size.x/2, $PlayerPanel.size.y/2)
 	create_marker(player, target_pos, true, $PlayerPanel)
 	$GameOverMenu.hide()
+	get_tree().paused = false
 
 func create_marker(player, position, temp=false, parent=$Board):
 	#create a marker node and add it as a child
