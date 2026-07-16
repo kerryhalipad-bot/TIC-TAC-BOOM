@@ -64,3 +64,6 @@ offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
 
 [node name="GameOverMenu" parent="." unique_id=303134880 instance=ExtResource("6_7mycd")]
+process_mode = 2
+
+[connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]

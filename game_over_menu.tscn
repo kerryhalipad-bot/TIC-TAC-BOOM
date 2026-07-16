@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c41pldlmeqbe0"]
 
+[ext_resource type="Script" uid="uid://bvrmsvbpnso51" path="res://game_over_menu.gd" id="1_14ib6"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg6a4"]
 bg_color = Color(0.5905035, 0.040404394, 0.16449499, 1)
 border_width_left = 2
@@ -25,6 +27,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="GameOverMenu" type="CanvasLayer" unique_id=303134880]
+script = ExtResource("1_14ib6")
 
 [node name="GameOverPanel" type="Panel" parent="." unique_id=1017413049]
 anchors_preset = 8
@@ -58,3 +61,5 @@ offset_bottom = 363.0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_14ib6")
 text = "Play Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

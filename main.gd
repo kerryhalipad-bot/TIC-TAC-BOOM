@@ -91,3 +91,7 @@ func check_win():
 		elif row_sum == -3 or col_sum == -3 or diagonal1_sum == -3 or diagonal2_sum == -3 :
 			winner = 2
 	return winner
+
+
+func _on_game_over_menu_restart() -> void:
+	new_game()
