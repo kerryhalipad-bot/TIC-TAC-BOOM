@@ -3,6 +3,7 @@ extends Node
 @export var cross_scene : PackedScene
 
 var temp_marker
+var moves : int
 var winner : int
 var player_panel_pos : Vector2i
 var player : int
@@ -37,6 +38,7 @@ func _input(event):
 					#convert mouse position into grid location
 				grid_pos = Vector2i(local_pos / cell_size)
 				if grid_data[grid_pos.y][grid_pos.x] == 0:
+					moves += 1
 					grid_data [grid_pos.y][grid_pos.x] = player
 					#place that players marker
 					var cell_center = Vector2(grid_pos * cell_size) + Vector2(cell_size / 2, cell_size / 2)
@@ -45,6 +47,15 @@ func _input(event):
 					if check_win() != 0:
 						get_tree().paused = true
 						$GameOverMenu.show()
+						if winner == 1:
+							$GameOverMenu.get_node("ResultLabel").text = "Player 1 wins"
+						elif winner == 2:
+							$GameOverMenu.get_node("ResultLabel").text = "Player 2 wins"
+						#check if the board has been filled
+					elif moves == 9:
+						get_tree().paused = true
+						$GameOverMenu.show()
+						$GameOverMenu.get_node("ResultLabel").text = "IT IS A TIE!"
 					player *= -1
 					if temp_marker:
 						temp_marker.queue_free()
@@ -55,6 +66,7 @@ func _input(event):
 
 func new_game():
 	player = 1
+	moves = 0
 	winner = 0
 	grid_data = [[0,0,0],[0,0,0],[0,0,0]]
 	row_sum = 0
@@ -88,7 +100,7 @@ func create_marker(player, position, temp=false, parent=$Board):
 func check_win():
 	#add up markers in each rows, column and diagonals
 	for i in len(grid_data):
-		row_sum = grid_data[i][0] + grid_data[i][2] + grid_data[i][2]
+		row_sum = grid_data[i][0] + grid_data[i][1] + grid_data[i][2]
 		col_sum = grid_data[0][i] + grid_data[1][i] + grid_data[2][i]
 		diagonal1_sum = grid_data[0][0] + grid_data[1][1] + grid_data[2][2]
 		diagonal2_sum = grid_data[0][2] + grid_data[1][1] + grid_data[2][2]

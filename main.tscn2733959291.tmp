@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dqxcogojyvb72"]
+
+[ext_resource type="Script" uid="uid://cxv8yuyipw3g" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://coy83dssffd87" path="res://circle.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bgil6xushvl12" path="res://board.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dgyixpgd6vrnc" path="res://board.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dta4wi5mi4kgq" path="res://cross.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c41pldlmeqbe0" path="res://game_over_menu.tscn" id="6_7mycd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+bg_color = Color(0.62969303, 0.26778904, 0.343219, 1)
+border_width_left = 10
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0.9950933, 0.9969204, 0.99700826, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[node name="Main" type="Node" unique_id=840976881]
+script = ExtResource("1_0xm2m")
+circle_scene = ExtResource("2_1bvp3")
+cross_scene = ExtResource("3_lquwl")
+
+[node name="Board" parent="." unique_id=1012123366 instance=ExtResource("2_h2yge")]
+position = Vector2(298.49997, 300)
+scale = Vector2(1.9633335, 1.9833332)
+script = ExtResource("3_h2yge")
+
+[node name="SidePanel" type="Panel" parent="." unique_id=1227903602]
+custom_minimum_size = Vector2(300, 600)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -303.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
+
+[node name="PlayerLabel" type="Label" parent="." unique_id=634931007]
+offset_left = 600.0
+offset_top = 120.0
+offset_right = 900.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 46
+text = "NextPlayer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerPanel" type="Panel" parent="." unique_id=1437477113]
+offset_left = 650.0
+offset_top = 200.0
+offset_right = 850.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="GameOverMenu" parent="." unique_id=303134880 instance=ExtResource("6_7mycd")]
+process_mode = 2
+
+[connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]
