@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c41pldlmeqbe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg6a4"]
+bg_color = Color(0.5905035, 0.040404394, 0.16449499, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.011805825, 0.092066385, 0.067216896, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14ib6"]
+bg_color = Color(0, 0.49046957, 0.18101302, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7995567, 0.4576025, 0.08168156, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="GameOverMenu" type="CanvasLayer" unique_id=303134880]
+
+[node name="GameOverPanel" type="Panel" parent="." unique_id=1017413049]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -125.0
+offset_right = 50.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tg6a4")
+
+[node name="ResultLabel" type="Label" parent="." unique_id=259747577]
+offset_left = 166.5
+offset_top = 200.0
+offset_right = 433.5
+offset_bottom = 258.0
+theme_override_font_sizes/font_size = 46
+text = "Player 1 wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="." unique_id=1966388363]
+offset_left = 175.0
+offset_top = 300.0
+offset_right = 425.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_14ib6")
+text = "Play Again"

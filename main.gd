@@ -43,7 +43,8 @@ func _input(event):
 					var spawn_pos = cell_center - Vector2(board_size / 2, board_size /2)
 					create_marker(player, spawn_pos)
 					if check_win() != 0:
-						print("game over")
+						get_tree().paused = true
+						$GameOverMenu.show()
 					player *= -1
 					if temp_marker:
 						temp_marker.queue_free()
@@ -59,6 +60,7 @@ func new_game():
 	#create a marker to show starting player's turn
 	var target_pos = Vector2($PlayerPanel.size.x/2, $PlayerPanel.size.y/2)
 	create_marker(player, target_pos, true, $PlayerPanel)
+	$GameOverMenu.hide()
 
 func create_marker(player, position, temp=false, parent=$Board):
 	#create a marker node and add it as a child
