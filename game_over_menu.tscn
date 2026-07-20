@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c41pldlmeqbe0"]
 
 [ext_resource type="Script" uid="uid://bvrmsvbpnso51" path="res://game_over_menu.gd" id="1_14ib6"]
+[ext_resource type="Script" uid="uid://sit2krjn42qf" path="res://restart_button.gd" id="2_wp3el"]
+[ext_resource type="AudioStream" uid="uid://bx5if3t4my3tc" path="res://Assets/impactMetal_004.ogg" id="3_wp3el"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg6a4"]
 bg_color = Color(0.5905035, 0.040404394, 0.16449499, 1)
@@ -61,5 +63,10 @@ offset_bottom = 363.0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_14ib6")
 text = "Play Again"
+script = ExtResource("2_wp3el")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1048221226]
+process_mode = 3
+stream = ExtResource("3_wp3el")
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

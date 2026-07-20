@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dgyixpgd6vrnc" path="res://board.gd" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dta4wi5mi4kgq" path="res://cross.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c41pldlmeqbe0" path="res://game_over_menu.tscn" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://bx5if3t4my3tc" path="res://Assets/impactMetal_004.ogg" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://qey72gu1gk4d" path="res://Assets/jingles_STEEL04.ogg" id="8_5vw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
 bg_color = Color(0.62969303, 0.26778904, 0.343219, 1)
@@ -65,5 +67,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
 
 [node name="GameOverMenu" parent="." unique_id=303134880 instance=ExtResource("6_7mycd")]
 process_mode = 2
+
+[node name="clicksound" type="AudioStreamPlayer" parent="." unique_id=78698505]
+process_mode = 3
+stream = ExtResource("7_272bh")
+
+[node name="endgamesound" type="AudioStreamPlayer" parent="." unique_id=909100117]
+process_mode = 3
+stream = ExtResource("8_5vw27")
 
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]

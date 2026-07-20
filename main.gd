@@ -40,12 +40,14 @@ func _input(event):
 				if grid_data[grid_pos.y][grid_pos.x] == 0:
 					moves += 1
 					grid_data [grid_pos.y][grid_pos.x] = player
+					$clicksound.play()
 					#place that players marker
 					var cell_center = Vector2(grid_pos * cell_size) + Vector2(cell_size / 2, cell_size / 2)
 					var spawn_pos = cell_center - Vector2(board_size / 2, board_size /2)
 					create_marker(player, spawn_pos)
 					if check_win() != 0:
 						get_tree().paused = true
+						$endgamesound.play()
 						$GameOverMenu.show()
 						if winner == 1:
 							$GameOverMenu.get_node("ResultLabel").text = "Player 1 wins"
@@ -54,6 +56,7 @@ func _input(event):
 						#check if the board has been filled
 					elif moves == 9:
 						get_tree().paused = true
+						$endgamesound.play()
 						$GameOverMenu.show()
 						$GameOverMenu.get_node("ResultLabel").text = "IT IS A TIE!"
 					player *= -1
