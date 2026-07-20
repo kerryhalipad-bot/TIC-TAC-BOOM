@@ -27,6 +27,33 @@ corner_radius_bottom_left = 10
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="Gradient" id="Gradient_5vw27"]
+offsets = PackedFloat32Array(0.009803922, 0.5, 1)
+colors = PackedColorArray(0.9576389, 0.7470667, 0.020614978, 1, 0.7529412, 0.16470589, 0.0627451, 1, 0.19716081, 0.19308147, 0.1941016, 0.5176471)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kek77"]
+gradient = SubResource("Gradient_5vw27")
+
+[sub_resource type="Curve" id="Curve_4c57u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_efxa6"]
+curve = SubResource("Curve_4c57u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vw27"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 450.0
+gravity = Vector3(0, 80, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_efxa6")
+color_ramp = SubResource("GradientTexture1D_kek77")
+turbulence_enabled = true
+
 [node name="Main" type="Node" unique_id=840976881]
 script = ExtResource("1_0xm2m")
 circle_scene = ExtResource("2_1bvp3")
@@ -75,5 +102,12 @@ stream = ExtResource("7_272bh")
 [node name="endgamesound" type="AudioStreamPlayer" parent="." unique_id=909100117]
 process_mode = 3
 stream = ExtResource("8_5vw27")
+
+[node name="FireWorks" type="GPUParticles2D" parent="." unique_id=1427634217]
+process_mode = 3
+emitting = false
+amount = 50
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_5vw27")
 
 [connection signal="restart" from="GameOverMenu" to="." method="_on_game_over_menu_restart"]

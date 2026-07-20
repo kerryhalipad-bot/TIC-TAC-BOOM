@@ -46,9 +46,13 @@ func _input(event):
 					var spawn_pos = cell_center - Vector2(board_size / 2, board_size /2)
 					create_marker(player, spawn_pos)
 					if check_win() != 0:
-						get_tree().paused = true
+						$FireWorks.visible = true
+						$FireWorks.global_position = $Board.global_position
+						$FireWorks.restart()
+						$FireWorks.emitting = true
 						$endgamesound.play()
 						$GameOverMenu.show()
+						get_tree().paused = true
 						if winner == 1:
 							$GameOverMenu.get_node("ResultLabel").text = "Player 1 wins"
 						elif winner == 2:
